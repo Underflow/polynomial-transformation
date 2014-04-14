@@ -27,6 +27,14 @@ plt.show()
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
+def plotPlane(plot, normal):
+    values = range(-2, 3)
+    x, y = np.meshgrid(values, values)
+    z = (-normal[0] * x + normal[1] * y + normal[2])
+    plot.plot_surface(x, y, z, alpha=0.7, color="green")
+plotPlane(ax, [0, 0, 1])
+
+
 # Apply a polynomial transform on the previous distributions
 for (x, y) in c1:
     ax.scatter(x, y, x **2 + y ** 2, alpha=0.5, c='r', marker='o')
