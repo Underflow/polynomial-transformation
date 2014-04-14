@@ -1,4 +1,4 @@
 polynomial-transformation
 =========================
 
-A polynomial transformation visualisation (SVM related)
+A polynomial transformation visualization (SVM related)
