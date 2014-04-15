@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import math
 
-c1 = [] # Class 1
-c2 = [] # Class 2
+(c1, c2) = ([], [])
 for _ in range(100):
     # Create a random distribution for the first class
     angle = np.random.rand() * 2 * math.pi
@@ -27,13 +26,11 @@ plt.show()
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-def plotPlane(plot, normal):
-    values = range(-2, 3)
-    x, y = np.meshgrid(values, values)
-    z = (-normal[0] * x + normal[1] * y + normal[2])
-    plot.plot_surface(x, y, z, alpha=0.7, color="green")
-plotPlane(ax, [0, 0, 1])
-
+# Draw the separation plan
+normal = [0, 0, 1]
+x, y = np.meshgrid(range(-2, 3), range(-2, 3))
+z = (-normal[0] * x - normal[1] * y + 1) * 1. / normal[2]
+ax.plot_surface(x, y, z, alpha=0.7, color="green")
 
 # Apply a polynomial transform on the previous distributions
 for (x, y) in c1:
